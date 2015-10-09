@@ -2,6 +2,7 @@ var zlib = require('zlib');
 var fs = require('fs');
 var Planner = require('../lib/BasicCSA.js');
 var Deserialize = require('../test/data/Deserialize.js');
+
 //let's create our route planner
 try {
   //  var planner = new Planner("stops:32733",new Date("2013-12-16T00:02:00.000Z"), new Date("2013-12-17T12:00:00.000Z"),"stops:32383");
@@ -20,10 +21,14 @@ try {
     arrivalStop : "stops:32831"//"stops:32842"//
   };
   var planner = new Planner(query);
-  var stations = JSON.parse(fs.readFileSync('test/data/stations.json', 'utf8'));
+  var stations = JSON.parse(fs.readFileSync('../test/data/2013/stations.json', 'utf8'));
 
   //open and pipe the stream of connections
-  fs.createReadStream('test/data/test20131216.json.gz', {flags: 'r'}).pipe(zlib.createGunzip()).pipe(new Deserialize()).pipe(planner);
+  fs.createReadStream('../test/data/2013/test20131216.json.gz', {flags: 'r'}).pipe(zlib.createGunzip()).pipe(new Deserialize()).pipe(planner);
+
+  planner.on("data", function (connection) {
+      // console.log(JSON.stringify(connection));
+  });
 
   planner.on("result", function (path) {
     if (path) {
@@ -34,10 +39,6 @@ try {
       console.log(JSON.stringify(path));
       process.exit();
     }
-  });
-
-  planner.on("stop_condition", function (count) {
-    console.error("Reached stop condition after relaxing " + count + " connections.");
   });
 
   planner.on("end", function () {
