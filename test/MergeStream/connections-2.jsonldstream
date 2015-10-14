@@ -1,0 +1,7 @@
+{ "@id":"connection:8", "departureTime":"2015-10-31T10:00:00.000Z" }	
+{ "@id":"connection:9", "departureTime":"2015-10-31T11:00:00.000Z" }
+{ "@id":"connection:10", "departureTime":"2015-10-31T12:00:00.000Z" }
+{ "@id":"connection:11", "departureTime":"2015-10-31T13:00:00.000Z" }
+{ "@id":"connection:12", "departureTime":"2015-11-03T14:00:00.000Z" }
+{ "@id":"connection:13", "departureTime":"2015-11-03T14:30:00.000Z" }
+{ "@id":"connection:14", "departureTime":"2015-11-04T15:00:00.000Z" }
