@@ -1,7 +1,7 @@
 # Connection Scan Algorithm for JavaScript
 [![Build Status](https://travis-ci.org/linkedconnections/csa.js.svg)](https://travis-ci.org/linkedconnections/csa.js)
 
-State: 
+State:
 
 * basic csa without footpaths is functional
 
@@ -29,6 +29,9 @@ planner.on("result", function (result) {
 planner.on("data", function (connection) {
     //Access to a minimum spanning tree of connections being built up
     //May be useful for e.g., creating isochrone maps
+});
+planner.on("scan", function (connection) {
+    //Notifies when a connection is scanned
 });
 ```
 
